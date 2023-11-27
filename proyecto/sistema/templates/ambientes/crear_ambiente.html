@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block titulo %} Crear Un Nuevo Ambiente {% endblock %}
+
+{% block contenido %}
+ 
+<div class="card">
+    <div class="card-header">
+        Crear Un Ambiente
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Datos Del Ambiente</h4>
+        
+        {% include 'ambientes/form_ambiente.html' %}
+
+    </div>
+
+    <div class="card-footer text-muted">
+    </div>
+</div>
+
+{% endblock %}

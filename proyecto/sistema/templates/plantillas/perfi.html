@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block titulo %} PERFIL DEL CORDINADOR {% endblock %}
+
+{% block contenido %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+</head>
+<header>
+    <h1>DATOS DE COORDINADOR</h1>
+</header>
+<body>
+    <img src="{% static "imagenes/yan.jpg" %}" alt="" style="width: 300px; height: 400px;"> 
+</body>
+</html>
+
+{% endblock %}

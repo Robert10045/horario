@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block titulo %} Crear Periodo {% endblock %}
+
+{% block contenido %}
+ 
+<div class="card">
+    <div class="card-header">
+        Crear Un Nuevo Periodo
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Datos Del Periodo</h4>
+        
+        {% include 'periodosA/form_periodos.html' %}
+
+    </div>
+
+    <div class="card-footer text-muted">
+    </div>
+</div>
+
+{% endblock %}

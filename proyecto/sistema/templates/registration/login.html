@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/e0b88fb328.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <title>Inicio De Sesion</title>
+</head>
+
+<body>
+    <section>
+        <div class="container">
+            <div class="formulario">
+                
+                <form method="post" action="">
+                    <h2>Iniciar Sesion</h2>
+                    {% csrf_token %}
+                    <div class="input-container">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="text" name="username" required>
+                        <label for="usuario">usuario</label>
+                    </div>
+
+                    <div class="input-container">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" name="password" required>
+                        <label for="usuario">contraseña</label>
+                    </div>
+
+                    <div class="olvidar">
+                        <label for="#">
+                            <input type="checkbox"> Recordar
+                            <a href="#">Olvide La Contraseña</a>
+                        </label>
+                    </div>
+
+                    <div>
+                        <button type="submit">iniciar</button>
+                    </div>
+                    
+                </form>
+                <div class="registrar">
+                    <p>no tengo cuenta <a href="#">crear una</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

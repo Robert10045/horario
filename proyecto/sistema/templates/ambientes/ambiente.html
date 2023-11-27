@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block titulo %} Lista de Ambientes {% endblock %}
+
+{% block contenido %}
+
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-success" href="{% url 'crear_ambiente' %}" role="button">Agregar Un Nuevo
+            Ambiente</a>
+
+        {% block buscador %}
+
+        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+            method="POST">
+            {% csrf_token %}
+            <div class="input-group">
+                <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." name="buscar"
+                    value="{{ request.POST.buscar }}">
+                <div class="input-group-append">
+                    <input class="btn btn-primary" type="submit" value="Buscar">
+                </div>
+            </div>
+        </form>
+
+        {% endblock buscador %}
+
+
+    </div>
+    <div class="card-body">
+
+        <h4 class="card-title">Ambientes</h4>
+
+        <div class="table-responsive">
+            <table class="table table-primary">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Ubicacion</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Capacidad</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ambiente in ambientes %}
+                    <tr class="">
+                        <td>{{ ambiente.id_ambiente }}</td>
+                        <td>{{ ambiente.nombre_ambiente }}</td>
+                        <td>{{ ambiente.ubicacion_ambiente }}</td>
+                        <td>{{ ambiente.tipo_ambiente }}</td>
+                        <td>{{ ambiente.capacidad_ambiente }}</td>
+                        <td>
+                            <a name="" id="" class="btn btn-info"
+                                href="{% url 'editar_ambiente' ambiente.id_ambiente %}" role="button">Editar</a>
+
+                            <a name="" id="" class="btn btn-danger"
+                                href="{% url 'eliminar_ambiente' ambiente.id_ambiente %}" role="button">Borrar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+</div>
+
+{% endblock %}

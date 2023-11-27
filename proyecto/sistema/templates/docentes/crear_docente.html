@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block titulo %} Crear Una Nuevo Docente {% endblock %}
+
+{% block contenido %}
+ 
+<div class="card">
+    <div class="card-header">
+        Crear Un Nuevo Docente
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Datos DeL Docente</h4>
+        
+        {% include 'docentes/form_docente.html' %}
+
+    </div>
+
+    <div class="card-footer text-muted">
+    </div>
+</div>
+
+{% endblock %}

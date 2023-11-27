@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block titulo %} editar un Ambiente {% endblock %}
+
+{% block contenido %}
+ 
+<div class="card">
+    <div class="card-header">
+        Editar Un Ambiente
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Datos Del Ambiente</h4>
+        
+        {% include 'ambientes/form_ambiente.html' %}
+
+    </div>
+
+    <div class="card-footer text-muted">
+    </div>
+</div>
+
+{% endblock %}
