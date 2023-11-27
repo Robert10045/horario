@@ -7,6 +7,8 @@ from django.db.models import Q
 from rest_framework import viewsets
 from rest_framework.response import Response
 from .serializers import HorarioSerializer
+from .facade import HorariosFacade
+from django.http import JsonResponse
 
 
 # Create your views here.
@@ -165,5 +167,45 @@ def eliminae_docente(request, id_docente):
 class HorarioViewset(viewsets.ModelViewSet):
     queryset = Horario.objects.all()
     serializer_class = HorarioSerializer
+    
+    def horario(self, request, *args, **kwargs):
+        # Utilizar la fachada para obtener la lista de horarios
+        horarios = HorariosFacade.obtener_horarios()
+        serializer = self.get_serializer(horarios, many=True)
+        return render(request, 'horarios/horario.html', {'horarios': horarios})
+    
+    def crear_horario(request):
+        crear_horario = HorariosFacade.obtener_horarios()
+        out = []
+        for horari in crear_horario:
+            out.append({
+                'id' : horari.id_horario,
+                'ambiente' : horari.ambiente,
+                'labor' : horari.labor,
+                'periodo' : horari.periodo,
+                'docente' : horari.docente,
+                'horario_dia' : horari.horario_dia.strftime("%m/%d/%Y"),
+                'horario_hora_inicio' : horari.horario_hora_fin.strftime("%H:%M:%S"),
+                'horario_hora_fin' : horari.horario_hora_fin.strftime("%H:%M:%S"),
+                'horario_duracion' : horari.horario_duracion,   
+            })
+            return render(request, 'horarios/crear_horario.html')
+
+    def add_event(request):
+        id = request.GET.get("start", None)
+        end = request.GET.get("end", None)
+        title = request.GET.get("title", None)
+        event = HorariosFacade(name=str(title), start=start, end=end)
+        event.save()
+        data = {}
+        return JsonResponse(data)
+    
+    
+    
+    #def crear(self, request):
+        # Utilizar la fachada para crear un nuevo horario
+        #fachada = HorariosFacade()
+        #nuevo = fachada.crear_horario(request.data)
+        #return Response({"status": "Horario creado correctamente"}, status=201)
     
     

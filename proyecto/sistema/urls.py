@@ -45,5 +45,7 @@ urlpatterns = [
     path('editar_docente/<int:id_docente>', views.editar_docentes, name="editar_docente"),
 
     path('horarios/', HorarioViewset.as_view({'get': 'horario'}), name='ver_horarios'),
+    path('crear_horario/', HorarioViewset.as_view({'get': 'crear_horario'}), name='crear_horario'),
+    
 ]
 
